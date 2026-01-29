@@ -276,31 +276,7 @@ def visualize_graphs(generator: nn.Module, dataset_stats: Tuple[Dict, Dict], num
 
 
 # Uniqueness & novelty
-""" def graph_hash(g: Data):
-    n = g.x.size(0)
-    e = g.edge_index.size(1)
-    if e > 0:
-        degrees = degree(g.edge_index[0], num_nodes=n).sort()[0]
-        deg_seq = ','.join(map(str, degrees.cpu().numpy()[:10]))
-    else:
-        deg_seq = '0'
-    return f"{n}_{e}_{deg_seq}" """
 
-""" def canonicalize_edge_index(edge_index, num_nodes):
-    # Sort each edge tuple (u, v)
-    edge_index = edge_index.clone()
-    # Make edges undirected canonical
-    row, col = edge_index
-    mask = row > col
-    row2 = torch.where(mask, col, row)
-    col2 = torch.where(mask, row, col)
-    edge_index = torch.stack([row2, col2], dim=0)
-
-    # Lexicographic sort
-    perm = (edge_index[0] * num_nodes + edge_index[1]).argsort()
-    edge_index = edge_index[:, perm]
-
-    return edge_index """
 
 def canonicalize_edge_index(edge_index):
     """

@@ -33,7 +33,7 @@ class Config:
     num_bins: int = 10
     vis_num_samples: int = 6
 
-    weights = {'degree': 0.3, 'clustering': 0.4, 'spectral': 0.3}
+    weights = {'degree': 0.4, 'clustering': 0.4, 'spectral': 0.2}
 
     save_dir: str = './saved_models/'
     results_dir: str = './results/'
