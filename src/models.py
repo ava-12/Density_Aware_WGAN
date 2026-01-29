@@ -9,46 +9,6 @@ from torch_geometric.nn import GCNConv, global_mean_pool
 from torch_geometric.data import Data
 
 
-# --------------------------
-# Edge Predictor
-# --------------------------
-class EdgePredictor(nn.Module):
-    def __init__(self, node_dim: int, hidden_dim: int, num_edge_types: int = 1):
-        super().__init__()
-        self.node_transform = nn.Linear(node_dim, hidden_dim)
-        self.edge_mlp = nn.Sequential(
-            nn.Linear(hidden_dim * 2, hidden_dim),
-            nn.LayerNorm(hidden_dim),
-            nn.ReLU(),
-            nn.Dropout(0.1),
-            nn.Linear(hidden_dim, max(hidden_dim // 2, 4)),
-            nn.ReLU(),
-            nn.Linear(max(hidden_dim // 2, 4), num_edge_types)
-        )
-        self.num_edge_types = num_edge_types
-
-    def forward(self, node_features: torch.Tensor, temperature: float = 1.0):
-        device = node_features.device
-        n = node_features.size(0)
-        h = F.relu(self.node_transform(node_features))
-
-        if n < 2:
-            return torch.empty((0, self.num_edge_types), device=device), torch.empty((2, 0), dtype=torch.long, device=device)
-
-        idx_i, idx_j = [], []
-        for i in range(n - 1):
-            idx_i.append(torch.full((n - i - 1,), i, dtype=torch.long, device=device))
-            idx_j.append(torch.arange(i + 1, n, dtype=torch.long, device=device))
-        idx_i = torch.cat(idx_i)
-        idx_j = torch.cat(idx_j)
-
-        pair_feats = torch.cat([h[idx_i], h[idx_j]], dim=1)
-        logits = self.edge_mlp(pair_feats)
-        probs = torch.sigmoid(logits / max(1e-6, temperature))
-        pair_index = torch.stack([idx_i, idx_j], dim=0)
-        return probs, pair_index
-
-
 
 # --------------------------
 # Alternative Edge Predictor (Simpler): Prefers connecting nodes that are "close" in latent space
