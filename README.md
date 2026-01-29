@@ -86,10 +86,6 @@ MMD_total = 0.4 * MMD_degree + 0.4 * MMD_clustering + 0.2 * MMD_spectral
 
 ## Results
 
-### Samples of generated graphs for PROTEINS dataset
-
-![Samples of generated graphs for PROTEINS dataset](results/generated_samples.png)
-
 
 Table 1: Detailed experimental results across all datasets and classes
 | Dataset  | Class   | MMD Degree | MMD Clustering | MMD Spectral | Avg Nodes (Real→Gen) | Avg Edges (Real→Gen) | MMD Combined | Uniqueness | Novelty |
@@ -118,3 +114,7 @@ Table 2: Comparison with state-of-the-art methods using MMD metrics (lower is be
 *Lower MMD scores indicate better match to real distribution*
 
 ## Citation
+Seyedeh Ava Razi Razavi, James Sargant, Sheridan Houghten, and
+Renata Dividino. Density-aware graph generation with learnable edge
+prediction. In 39th Canadian Conference on Artificial Intelligence (To
+Appear). Canadian Artificial Intelligence Association (CAIAC), 2026.
