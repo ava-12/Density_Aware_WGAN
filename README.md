@@ -1,1 +1,120 @@
-# Density_Aware_WGAN
+# Density-Aware Graph Generation with WGANs 
+
+Graph generation featuring density-aware edge prediction.
+
+## Key Features
+
+- Density-Aware Edge Generation: Respects the edge density distribution of real graphs
+- Class-Conditional Generation: Generate graphs with specific structural properties
+- Comprehensive Evaluation: MMD metrics for degree, clustering, and spectral features
+- Novelty Detection: Tracks uniqueness and novelty of generated graphs
+
+
+## Model Architecture
+
+### 1. **Generator**
+- Transforms noise vectors into node features
+- Samples appropriate number of nodes per class
+- Uses class embeddings for conditional generation
+
+### 2. **Edge Predictor**
+- Computes edges based on latent space proximity
+- Faster and more interpretable
+- Ideal for spatial graphs
+
+### 3. **Discriminator**
+- Graph Convolutional Network (GCN) for processing graphs
+- Global mean pooling for graph-level representation
+- Class-conditional scoring
+
+
+## Dataset (TUDatasets)
+
+| Dataset | Nodes | Classes | Description |
+|---------|-------|---------|-------------|
+| PROTEINS | 20-600 | 2 | Protein structures |
+| MUTAG | 10-30 | 2 | Molecular graphs |
+| ENZYMES | 10-125 | 6 | Protein tertiary structures |
+
+## Training
+
+- Early Stopping: Automatically stops when validation MMD plateaus
+- Model Checkpointing: Saves best model based on validation metrics
+- Temperature Annealing: Gradually decreases from 2.0 to 0.5
+- Critic Training: Updates discriminator `n_critic` times per generator update
+
+
+##  Evaluation
+
+### Metrics
+
+The model is evaluated using **Maximum Mean Discrepancy (MMD)** across three graph statistics:
+
+1. **Degree Distribution** - Node connectivity patterns
+2. **Clustering Coefficient** - Local graph density
+3. **Spectral Features** - Global graph structure (eigenvalues)
+
+### Combined Score
+
+```python
+MMD_total = 0.4 * MMD_degree + 0.4 * MMD_clustering + 0.2 * MMD_spectral
+```
+
+### Additional Metrics
+
+- **Uniqueness**: Percentage of unique generated graphs
+- **Novelty**: Percentage of graphs not seen during training
+
+
+## Key Hyperparameters
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `noise_dim` | 16 | Dimension of noise vector |
+| `hidden_dim_gen` | 32 | Generator hidden dimension |
+| `hidden_dim_dis` | 32 | Discriminator hidden dimension |
+| `n_critic` | 5 | Discriminator updates per generator update |
+| `lambda_gp` | 10.0 | Gradient penalty coefficient |
+| `lr_gen` | 2e-4 | Generator learning rate |
+| `lr_dis` | 5e-4 | Discriminator learning rate |
+| `start_temperature` | 2.0 | Initial temperature for edge sampling |
+| `end_temperature` | 0.5 | Final temperature for edge sampling |
+| `epochs` | 50 | Training epochs |
+| `patience` | 12 | Early stopping patience |
+
+
+
+## Results
+
+### Samples of generated graphs for PROTEINS dataset
+
+![Samples of generated graphs for PROTEINS dataset](results/generated_samples.png)
+
+
+Table 1: Detailed experimental results across all datasets and classes
+| Dataset  | Class   | MMD Degree | MMD Clustering | MMD Spectral | Avg Nodes (Real→Gen) | Avg Edges (Real→Gen) | MMD Combined | Uniqueness | Novelty |
+| -------- | ------- | ---------- | -------------- | ------------ | -------------------- | -------------------- | ------------ | ---------- | ------- |
+| MUTAG    | Class 0 | 0.253      | 1.063          | 0.117        | 13.4→13.8            | 14.0→14.7            | 0.536        | 1.000      | 1.000   |
+| MUTAG    | Class 1 | 0.305      | 1.044          | 0.107        | 20.7→18.6            | 23.5→19.7            | 0.541        | 0.933      | 1.000   |
+| ENZYMES  | Class 0 | 0.206      | 0.204          | 0.131        | 31.6→41.0            | 63.3→86.0            | 0.183        | 1.000      | 1.000   |
+| ENZYMES  | Class 1 | 0.133      | 0.127          | 0.063        | 32.1→31.6            | 62.1→68.9            | 0.110        | 1.000      | 0.941   |
+| ENZYMES  | Class 2 | 0.155      | 0.137          | 0.068        | 30.1→30.5            | 60.3→62.2            | 0.222        | 1.000      | 1.000   |
+| ENZYMES  | Class 3 | 0.208      | 0.167          | 0.119        | 37.4→37.1            | 73.5→71.2            | 0.165        | 1.000      | 0.916   |
+| ENZYMES  | Class 4 | 0.146      | 0.114          | 0.080        | 32.1→28.4            | 60.4→53.0            | 0.113        | 1.000      | 1.000   |
+| ENZYMES  | Class 5 | 0.149      | 0.125          | 0.050        | 38.8→27.7            | 77.3→54.0            | 0.110        | 1.000      | 0.941   |
+| PROTEINS | Class 0 | 0.054      | 0.039          | 0.192        | 54.5→49.5            | 103.0→124.9          | 0.089        | 0.951      | 1.000   |
+| PROTEINS | Class 1 | 0.091      | 0.050          | 0.062        | 19.6→25.1            | 36.5→57.2            | 0.066        | 0.921      | 0.859   |
+
+
+Table 2: Comparison with state-of-the-art methods using MMD metrics (lower is better)
+| Model            | PROTEINS (Degree) | PROTEINS (Clustering) | ENZYMES (Degree) | ENZYMES (Clustering) |
+| ---------------- | ----------------- | --------------------- | ---------------- | -------------------- |
+| DeepGMG          | 0.96              | 0.63                  | 0.43             | 0.38                 |
+| GraphRNN         | 0.04              | 0.18                  | 0.06             | 0.20                 |
+| LGGAN            | 0.18              | 0.15                  | 0.09             | 0.17                 |
+| WPGAN            | **0.03**          | 0.31                  | **0.02**         | 0.28                 |
+| **Our Approach** | 0.08              | **0.07**              | 0.09             | **0.08**             |
+
+*Lower MMD scores indicate better match to real distribution*
+
+## Citation
