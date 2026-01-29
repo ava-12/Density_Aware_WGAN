@@ -10,9 +10,7 @@ from torch_geometric.data import Data
 
 
 
-# --------------------------
-# Alternative Edge Predictor (Simpler): Prefers connecting nodes that are "close" in latent space
-# --------------------------
+
 class DistanceEdgePredictor(nn.Module):
     """Predicts edges based on learned distance in latent space."""
     def __init__(self, node_dim: int, hidden_dim: int):
