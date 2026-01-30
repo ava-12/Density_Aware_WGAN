@@ -153,7 +153,8 @@ a narrower distribution across bins. This behavior highlights the effect of dete
     <td>
       <img src="https://github.com/user-attachments/assets/90fad3a1-233a-40d0-8267-ecc89b7e96b1" width="350"/>
     </td>
-          <img src="https://github.com/user-attachments/assets/810cbacb-bde4-46fa-84a9-beaf08edbc85" width="350"/>
+    <td>
+      <img src="https://github.com/user-attachments/assets/810cbacb-bde4-46fa-84a9-beaf08edbc85" width="350"/>
     </td>
   </tr>
 </table>
