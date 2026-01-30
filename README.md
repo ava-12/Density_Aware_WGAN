@@ -118,10 +118,25 @@ Table 2: Comparison with state-of-the-art methods using MMD metrics (lower is be
 
 ## Distribution Comparison
 ![PROTEINS_Clustering](https://github.com/user-attachments/assets/771630f9-6da5-4b94-8153-c8ff3c177a90)
+Clustering coefficient distribution demonstrates strong alignment with substantial overlap, confirming the model’s superior preservation of local connectivity patterns and community structure, consistent with the best clustering MMD (0.07) achieved among compared methods.
+
+
+![PROTEINS_Degree](https://github.com/user-attachments/assets/862a3593-60db-49ae-85e1-a69ae6fbfe6f)
+
+The real graphs follow a broader, near-normal degree distribution, reflecting
+substantial variation in node connectivity. However, the generated graphs display
+a narrower distribution across bins. This behavior highlights the effect of deterministic density-aware edge selection, which constrains graphs toward class-level average sparsity and limits the model’s ability to capture degree heterogeneity.
 
 
 
-![Proteins_degree_distribution](https://github.com/user-attachments/assets/aad93188-2e53-4bc7-9930-71329544cacf)
+## Visual Comparison on Real and Generated dataset
+[CASCON_2025-3.tiff](https://github.com/user-attachments/files/24969131/CASCON_2025-3.tiff)
+
+[CASCON_2025-3.tiff](https://github.com/user-attachments/files/24969160/CASCON_2025-3.tiff)
+
+[CASCON_2025-3.tiff](https://github.com/user-attachments/files/24969196/CASCON_2025-3.tiff)
+
+[CASCON_2025-3.tiff](https://github.com/user-attachments/files/24969200/CASCON_2025-3.tiff)
 
 
 ## Citation
