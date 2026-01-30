@@ -131,12 +131,29 @@ a narrower distribution across bins. This behavior highlights the effect of dete
 
 ## Visual Comparison on Real and Generated dataset
 
-<p align="center">
-  <img src="![PROTEINS_0](https://github.com/user-attachments/assets/76acb433-1caa-4257-be9e-95d75dc3ffae)" width="300"/>
-  <img src="![PROTEINS_1](https://github.com/user-attachments/assets/0500e5ae-8e5a-4bfd-91b4-5412f42a14f7)" width="300"/>
-  <img src="![PROTEINS_GEN0](https://github.com/user-attachments/assets/90fad3a1-233a-40d0-8267-ecc89b7e96b1)" width="300"/>
-  <img src="![PROTEINS_gen_1](https://github.com/user-attachments/assets/810cbacb-bde4-46fa-84a9-beaf08edbc85)" width="300"/>
-</p>
+<h3 align="center">PROTEINS Dataset – Real vs Generated Graphs</h3>
+
+<table align="center">
+  <tr>
+    <td align="center"><b>Class 0 (Real)</b></td>
+    <td align="center"><b>Class 1 (Real)</b></td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/76acb433-1caa-4257-be9e-95d75dc3ffae" width="350"/>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/0500e5ae-8e5a-4bfd-91b4-5412f42a14f7" width="350"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Class 0 (Generated)</b></td>
+    <td align="center"><b>Class 1 (Generated)</b></td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/90fad3a1-233a-40d0-8267-ecc89b7e96b1" width="350"/>
+    </td>
 
 
 
