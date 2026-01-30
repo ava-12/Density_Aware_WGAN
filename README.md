@@ -116,6 +116,14 @@ Table 2: Comparison with state-of-the-art methods using MMD metrics (lower is be
 
 *Lower MMD scores indicate better match to real distribution*
 
+## Distribution Comparison
+![PROTEINS_Clustering](https://github.com/user-attachments/assets/771630f9-6da5-4b94-8153-c8ff3c177a90)
+
+
+
+![Proteins_degree_distribution](https://github.com/user-attachments/assets/aad93188-2e53-4bc7-9930-71329544cacf)
+
+
 ## Citation
 Seyedeh Ava Razi Razavi, James Sargant, Sheridan Houghten, and
 Renata Dividino. Density-aware graph generation with learnable edge
