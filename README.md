@@ -130,13 +130,11 @@ a narrower distribution across bins. This behavior highlights the effect of dete
 
 
 ## Visual Comparison on Real and Generated dataset
-[CASCON_2025-3.tiff](https://github.com/user-attachments/files/24969131/CASCON_2025-3.tiff)
+![PROTEINS_0](https://github.com/user-attachments/assets/76acb433-1caa-4257-be9e-95d75dc3ffae)
+![PROTEINS_1](https://github.com/user-attachments/assets/0500e5ae-8e5a-4bfd-91b4-5412f42a14f7)
 
-[CASCON_2025-3.tiff](https://github.com/user-attachments/files/24969160/CASCON_2025-3.tiff)
-
-[CASCON_2025-3.tiff](https://github.com/user-attachments/files/24969196/CASCON_2025-3.tiff)
-
-[CASCON_2025-3.tiff](https://github.com/user-attachments/files/24969200/CASCON_2025-3.tiff)
+![PROTEINS_GEN0](https://github.com/user-attachments/assets/90fad3a1-233a-40d0-8267-ecc89b7e96b1)
+![PROTEINS_gen_1](https://github.com/user-attachments/assets/810cbacb-bde4-46fa-84a9-beaf08edbc85)
 
 
 ## Citation
