@@ -105,10 +105,10 @@ Table 1: Detailed experimental results across all datasets and classes
 Table 2: Comparison with state-of-the-art methods using MMD metrics (lower is better)
 | Model            | PROTEINS (Degree) | PROTEINS (Clustering) | PROTEINS (Spectral)   | ENZYMES (Degree) | ENZYMES (Clustering) |ENZYMES (Spectral) |
 | ---------------- | ----------------- | --------------------- | --------------------- | ---------------- | -------------------- | -------------------- |
-| DeepGMG          | 0.96              | 0.63                  | N/A                   | 0.43             | 0.38                 |N/A                 |
-| GraphRNN         | 0.04              | 0.18                  | N/A                   | 0.06             | 0.20                 |N/A                 |
-| LGGAN            | 0.18              | 0.15                  | N/A                   | 0.09             | 0.17                 |N/A                |
-| WPGAN            | **0.03**          | 0.31                  | N/A                   | **0.02**         | 0.28                 |N/A                |
+| DeepGMG          | 0.96              | 0.63                  | -                   | 0.43             | 0.38                 |-                 |
+| GraphRNN         | 0.04              | 0.18                  | -                   | 0.06             | 0.20                 |-                |
+| LGGAN            | 0.18              | 0.15                  | -                   | 0.09             | 0.17                 |-               |
+| WPGAN            | **0.03**          | 0.31                  | -                   | **0.02**         | 0.28                 |-              |
 | **Our Approach** | 0.08              | **0.07**              | 0.06                  | 0.09             | **0.08**             |0.04               |
 
 *Lower MMD scores indicate better match to real distribution*
