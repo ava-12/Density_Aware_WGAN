@@ -129,7 +129,7 @@ a narrower distribution across bins. This behavior highlights the effect of dete
 
 
 
-## Visual Comparison on Real and Generated dataset
+## Visual Comparison of Real and Generated PROTEINS dataset
 
 
 <table align="center">
