@@ -27,6 +27,9 @@ Graph generation featuring density-aware edge prediction.
 - Global mean pooling for graph-level representation
 - Class-conditional scoring
 
+<img width="1756" height="651" alt="wgan_edge_graph_architectureN" src="https://github.com/user-attachments/assets/ddb79dc8-b3b6-424a-9bec-c6a70a0aa543" />
+
+
 
 ## Dataset (TUDatasets)
 
